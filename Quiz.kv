@@ -1,0 +1,61 @@
+Prototype:
+
+<Prototype>:
+    orientation:"vertical"
+    padding:"20dp","20dp","20dp","20dp"
+    spacing:"10dp"
+    NavBar:
+
+    Status:
+    Question:
+    Answers:
+
+<NavBar@BoxLayout>:
+    orientation: "horizontal"
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+
+<Status@BoxLayout>:
+    orientation: "horizontal"
+    Label:
+        text: "5"
+        size_hint: .1,.1
+    Label:
+        text: "0"
+        size_hint: .1,.1
+
+<Question@BoxLayout>:
+    orientation: "vertical"
+    Label:
+        text : "1"
+        size_hint: .1,.1
+    Image:
+        source:"Assets/pic1.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.5,.5
+    Label:
+        text:"What is the basic unit of Life?"
+        size_hint:.4,.4
+
+<Answers@BoxLayout>:
+    orientation:"vertical"
+    Button:
+        text: "Cell"
+        size_hint: .25,.25
+    Button:
+        text: "Organ"
+        size_hint: .25,.25
+    Button:
+        text: "Tissue"
+        size_hint: .25,.25
+    Button:
+        text: "System"
+        size_hint: .25,.25
