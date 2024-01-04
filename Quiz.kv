@@ -1,14 +1,24 @@
-Prototype:
+WindowManager:
+    Q1:
+    Q2:
+    Q3:
+    Q4:
+    Q5:
+    Q6:
+    Q7:
+    Q8:
+    Q9:
+    Q10
 
-<Prototype>:
-
-    padding:"20dp","20dp","20dp","20dp"
-    spacing:"10dp"
+<Q1>:
+    name: "Q1"
+    FloatLayout:
 
     Button:
         text: "Back"
         size_hint: .1,.05
         pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
     Label:
         text: "Level 1" # made it a function
         size_hint: .8,.05
@@ -46,15 +56,676 @@ Prototype:
         text: "Cell"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q2'
+
     Button:
         text: "Organ"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q2'
     Button:
         text: "Tissue"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q2'
     Button:
         text: "System"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q2'
+
+<Q2>:
+    name: 'Q2'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "2"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic2.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the process by which plants make food?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Digestion"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q3'
+    Button:
+        text: "Respiration"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q3'
+    Button:
+        text: "Photosynthesis"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q3'
+    Button:
+        text: "Reproduction"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q3'
+
+<Q3>:
+    name: 'Q3'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "3"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic3.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"Which of the following is NOT a living thing?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Plant"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q4'
+    Button:
+        text: "Animal"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q4'
+    Button:
+        text: "Rock"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q4'
+    Button:
+        text: "Bacteria"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q4'
+
+<Q4>:
+    name: 'Q4'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "4"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic4.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"Which of the following is NOT a part of the plant cell?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Cell Wall"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q5'
+    Button:
+        text: "Nucleus"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q5'
+    Button:
+        text: "Mitochondria"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q5'
+    Button:
+        text: "Chlorophyll"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q5'
+
+<Q5>:
+    name: 'Q5'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic5.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the function of the heart?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "To pump blood"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q6'
+    Button:
+        text: "To digest food"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q6'
+    Button:
+        text: "To filter blood"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q6'
+    Button:
+        text: "To protect the brain"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q6'
+
+<Q6>:
+    name: 'Q6'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "6"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic6.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the largest organ in the human body?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Skin"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q7'
+    Button:
+        text: "Liver"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q7'
+    Button:
+        text: "Brain"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q7'
+    Button:
+        text: "Heart"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q7'
+
+<Q7>:
+    name: 'Q7'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "1"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic7.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"Which of the following is NOT a part of the digestive system?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Mouth"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q8'
+    Button:
+        text: "Stomach"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q8'
+    Button:
+        text: "Intestines"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q8'
+    Button:
+        text: "Lungs"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q8'
+
+<Q8>:
+    name: 'Q8'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 1" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "1"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic8.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the function of the respiratory system?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Digestion"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q9'
+    Button:
+        text: "To bring oxygen into the body and remove carbon dioxide"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q9'
+    Button:
+        text: "To pump blood"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q9'
+    Button:
+        text: "To protect the brain"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q9'
+
+<Q9>:
+    name: 'Q9'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 2" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "9"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic9.png"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the difference between a herbivore and a carnivore?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "A herbivore eats plants, while a carnivore eats animals."
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q10'
+    Button:
+        text: "A herbivore is a producer, while a carnivore is a consumer."
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q10'
+    Button:
+        text: "A herbivore has a backbone, while a carnivore does not."
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q10'
+    Button:
+        text: "A herbivore is warm-blooded, while a carnivore is cold-blooded."
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'Q10'
+
+<Q10>:
+    name: 'Q10'
+    FloatLayout:
+
+    #Nav
+    Button:
+        text: "Back"
+        size_hint: .1,.05
+        pos_hint: {"x":.05, "top":.98}
+        on_release:app.root.current = 'levels'
+    Label:
+        text: "Level 2" # made it a function
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.98}
+    Button:
+        text: "Menu"
+        size_hint: .1,.05
+        pos_hint: {"x":.85, "top":.98}
+    #Status
+    Label:
+        text: "5"
+        size_hint: .1,.1
+        pos_hint: {"x":.25, "top":.90}
+    Label:
+        text: "0"
+        size_hint: .1,.1
+        pos_hint: {"x":.70, "top":.90}
+    #Question
+    Label:
+        text : "10"
+        size_hint: .1,.1
+        pos_hint: {"x":.50, "top":.85}
+    Image:
+        source:"Assets/pic10.jpg"
+        allow_stretch:True
+        keep_ratio: False
+        size_hint:.50,.25
+        pos_hint: {"x":.25, "top":.75}
+    Label:
+        text:"What is the process by which animals reproduce?"
+        size_hint:.4,.4
+        pos_hint: {"x":.30, "top":.65}
+    #Choices
+    Button:
+        text: "Sexual reproduction"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.35}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'levels'
+    Button:
+        text: " Asexual reproduction"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.30}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'levels'
+    Button:
+        text: " Both A and B"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.25}
+        on_release:self.background_color = (0,255,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'levels'
+    Button:
+        text: "None of the above"
+        size_hint: .8,.05
+        pos_hint: {"x":.1, "top":.20}
+        on_release:self.background_color = (255,0,0)
+        on_release:self.color = (0,0,0)
+        on_release:app.root.current = 'levels'
