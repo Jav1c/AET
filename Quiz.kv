@@ -1,46 +1,57 @@
 WindowManager:
+    HomePage:
+        name: 'home'
     Q1:
+        name: 'Q1'
     Q2:
+        name: 'Q2'
     Q3:
+        name: 'Q3'
     Q4:
+        name: 'Q4'
     Q5:
+        name: 'Q5'
     Q6:
+        name: 'Q6'
     Q7:
+        name: 'Q7'
     Q8:
+        name: 'Q8'
     Q9:
-    Q10
+        name: 'Q9'
+    Q10:
+        name: 'Q10'
+    ScoreScreen:
+        name: 'ScoreScreen'
+    InstructionPage:
+        name: 'instructionpage'
 
+
+<HomePage>:
+    name:'home'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'home.png'
+
+    Button:
+        on_release:app.root.current = 'Q1'
+        size_hint:0.7,0.45
+        pos_hint: {"x":0.15,"y":0.15}
+        background_normal:'btn.png'
+        background_down:'btn.png'
+
+    Button:
+        on_release:app.root.current = 'ScoreScreen'
+        size_hint:0.3,0.45
+        pos_hint: {"x":0.2,"y":0.2}
+        background_normal:'nextbtn.png'
+        background_down:'nextbtn.png'
+#=============================================================Questions=================================================
 <Q1>:
     name: "Q1"
     FloatLayout:
 
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-
-    Label:
-        text : "1"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
     Image:
         source:"Assets/pic1.png"
         allow_stretch:True
@@ -56,676 +67,842 @@ WindowManager:
         text: "Cell"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q2'
+        on_release: app.check_answer(root, 0)  # Assuming 0 is the index of the correct answer
 
     Button:
         text: "Organ"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q2'
+        on_release: app.check_answer(root, 1)  # Adjust the index based on the correct answer
+
     Button:
         text: "Tissue"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q2'
+        on_release: app.check_answer(root, 2)  # Adjust the index based on the correct answer
+
     Button:
         text: "System"
         size_hint: .8,.05
         pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q2'
+        on_release: app.check_answer(root, 3)  # Adjust the index based on the correct answer
 
+    Label:
+        id: score_label
+        text: "Score: 0"
+        size_hint: .2, .05
+        pos_hint: {"x": .75, "top": .98}
+
+    Button:
+        text: "Next"
+        size_hint: .2, .05
+        pos_hint: {"x": .75, "top": .02}
+        on_release: app.check_answer(root, root.correct_answer)
+
+    Label:
+        id: feedback_label
+        text: ""
+        size_hint: .2, .05
+        pos_hint: {"x": .75, "top": .95}
 <Q2>:
     name: 'Q2'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "2"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic2.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the process by which plants make food?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Digestion"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q3'
-    Button:
-        text: "Respiration"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q3'
-    Button:
-        text: "Photosynthesis"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q3'
-    Button:
-        text: "Reproduction"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q3'
+        Image:
+            source:"Assets/pic2.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the process by which plants make food?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Digestion"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Respiration"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Photosynthesis"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "Reproduction"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q3>:
     name: 'Q3'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "3"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic3.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"Which of the following is NOT a living thing?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Plant"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q4'
-    Button:
-        text: "Animal"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q4'
-    Button:
-        text: "Rock"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q4'
-    Button:
-        text: "Bacteria"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q4'
+
+        Image:
+            source:"Assets/pic3.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"Which of the following is NOT a living thing?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Plant"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Animal"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Rock"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "Bacteria"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q4>:
     name: 'Q4'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "4"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic4.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"Which of the following is NOT a part of the plant cell?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Cell Wall"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q5'
-    Button:
-        text: "Nucleus"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q5'
-    Button:
-        text: "Mitochondria"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q5'
-    Button:
-        text: "Chlorophyll"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q5'
+
+        Image:
+            source:"Assets/pic4.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"Which of the following is NOT a part of the plant cell?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Cell wall"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Nucleus"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Mitochondria"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "Chlorophyll"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q5>:
     name: 'Q5'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic5.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the function of the heart?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "To pump blood"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q6'
-    Button:
-        text: "To digest food"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q6'
-    Button:
-        text: "To filter blood"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q6'
-    Button:
-        text: "To protect the brain"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q6'
+
+        Image:
+            source:"Assets/pic5.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the function of the heart?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "To pump blood"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "To digest food"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "To filter blood"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "To protect the brain"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q6>:
     name: 'Q6'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "6"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic6.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the largest organ in the human body?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Skin"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q7'
-    Button:
-        text: "Liver"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q7'
-    Button:
-        text: "Brain"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q7'
-    Button:
-        text: "Heart"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q7'
+        Image:
+            source:"Assets/pic6.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the largest organ in the human body?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Skin"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Liver"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Brain"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "Heart"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
 
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 <Q7>:
     name: 'Q7'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "1"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic7.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"Which of the following is NOT a part of the digestive system?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Mouth"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q8'
-    Button:
-        text: "Stomach"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q8'
-    Button:
-        text: "Intestines"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q8'
-    Button:
-        text: "Lungs"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q8'
+        Image:
+            source:"Assets/pic7.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"Which of the following is NOT a part of the digestive system?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Mouth"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Stomach"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Intestines"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "Lungs"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q8>:
     name: 'Q8'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 1" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "1"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic8.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the function of the respiratory system?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Digestion"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q9'
-    Button:
-        text: "To bring oxygen into the body and remove carbon dioxide"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q9'
-    Button:
-        text: "To pump blood"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q9'
-    Button:
-        text: "To protect the brain"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q9'
+        Image:
+            source:"Assets/pic8.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the function of the respiratory system?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "To bring oxygen into the body and remove carbon dioxide"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "To digest food"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "To pump blood"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "To protect the brain"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
 
-<Q9>:
-    name: 'Q9'
-    FloatLayout:
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 2" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "9"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic9.png"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the difference between a herbivore and a carnivore?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "A herbivore eats plants, while a carnivore eats animals."
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q10'
-    Button:
-        text: "A herbivore is a producer, while a carnivore is a consumer."
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q10'
-    Button:
-        text: "A herbivore has a backbone, while a carnivore does not."
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q10'
-    Button:
-        text: "A herbivore is warm-blooded, while a carnivore is cold-blooded."
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'Q10'
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
 
 <Q10>:
     name: 'Q10'
     FloatLayout:
 
-    #Nav
-    Button:
-        text: "Back"
-        size_hint: .1,.05
-        pos_hint: {"x":.05, "top":.98}
-        on_release:app.root.current = 'levels'
-    Label:
-        text: "Level 2" # made it a function
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.98}
-    Button:
-        text: "Menu"
-        size_hint: .1,.05
-        pos_hint: {"x":.85, "top":.98}
-    #Status
-    Label:
-        text: "5"
-        size_hint: .1,.1
-        pos_hint: {"x":.25, "top":.90}
-    Label:
-        text: "0"
-        size_hint: .1,.1
-        pos_hint: {"x":.70, "top":.90}
-    #Question
-    Label:
-        text : "10"
-        size_hint: .1,.1
-        pos_hint: {"x":.50, "top":.85}
-    Image:
-        source:"Assets/pic10.jpg"
-        allow_stretch:True
-        keep_ratio: False
-        size_hint:.50,.25
-        pos_hint: {"x":.25, "top":.75}
-    Label:
-        text:"What is the process by which animals reproduce?"
-        size_hint:.4,.4
-        pos_hint: {"x":.30, "top":.65}
-    #Choices
-    Button:
-        text: "Sexual reproduction"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.35}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'levels'
-    Button:
-        text: " Asexual reproduction"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.30}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'levels'
-    Button:
-        text: " Both A and B"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.25}
-        on_release:self.background_color = (0,255,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'levels'
-    Button:
-        text: "None of the above"
-        size_hint: .8,.05
-        pos_hint: {"x":.1, "top":.20}
-        on_release:self.background_color = (255,0,0)
-        on_release:self.color = (0,0,0)
-        on_release:app.root.current = 'levels'
+        Image:
+            source:"Assets/pic10.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the difference between a herbivore and a carnivore?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "A herbivore eats plants, while a carnivore eats animals"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "A herbivore is a producer, while a carnivore is a consumer"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "A herbivore has a backbone, while a carnivore does not"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "A herbivore is warm-blooded, while a carnivore is cold-blooded"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
+<Q9>:
+    name: 'Q9'
+    FloatLayout:
+
+        Image:
+            source:"Assets/pic9.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the process by which animals reproduce?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "Sexual reproduction"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release: app.check_answer(root, 0)
+        Button:
+            text: "Asexual reproduction"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release: app.check_answer(root, 1)
+        Button:
+            text: "Both A and B"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release: app.check_answer(root, 2)
+        Button:
+            text: "None of the above"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release: app.check_answer(root, 3)
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
+
+
+
+
+
+
+
+
+
+#=============================================================End Result ==============================================
+<ScoreScreen>:
+    name: 'ScoreScreen'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'bg1.png'
+
+    FloatLayout:
+        Button:
+            on_release:app.root.current = 'home'
+            size_hint:0.175,0.09
+            pos_hint: {"x":0.035,"y":0.90}
+            background_normal:'back.png'
+            background_down:'back.png'
+
+
+        Label:
+            text: 'Result'
+            font_size: self.width / 19
+            color: 1, 1, 1
+            font_name: 'GlacialIndifference-Regular.otf'
+            pos_hint: {'center_x': 0.275, 'center_y': 0.945}
+
+        Label:
+            text: 'Here is your score!'
+            font_size: self.width / 21
+            color: 1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.51, 'center_y': 0.87}
+
+        Label:
+            text: 'Score'
+            font_size: self.width / 18
+            color: 0, 0, 0
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.76}
+
+        Image:
+            source: 'metro.png'
+            size_hint: (0.45, 0.45)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+
+        Label:
+            id: final_score
+            font_size: self.width / 10
+            font_name: 'GlacialIndifference-Bold.otf'
+            text: " 0"
+            size_hint: .9, .5
+            color: (0, 0, 0)
+            pos_hint: {"x": .035, "y":0.45}
+
+
+
+        Image:
+            source: 'starRec.png'
+            size_hint: (0.88, 1.3)
+            pos_hint: {'center_x': 0.49, 'center_y': 0.34}
+
+        Label:
+            text: ' Time Taken'
+            font_size: self.width / 19
+            color: (0.2353, 0.0706, 0.2745, 1)
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.42}
+
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+
+            Label:
+                id: timer_label
+                text: "Time: 0"
+                color: (0 ,0 ,0)
+                font_size: 20
+                font_name: 'GlacialIndifference-Bold.otf'
+
+
+        Button:
+            text: 'Play Again'
+            size_hint:0.35, 0.065
+            pos_hint: {"x":0.1,"y":0.065}
+            text_size: self.width, None
+            font_size:self.width/8
+            font_name: 'GlacialIndifference-Bold.otf'
+            color: (1, 1, 1)
+            background_color:(0.6824, 0.2, 0.8, 1)
+            halign: 'center'
+            valign: 'center'
+            on_release:app.root.current = 'triviaboard'
+
+        Button:
+            text: "Restart"
+            size_hint: .35, .065
+            pos_hint: {"x":0.1,"y":0.07}
+            text_size: self.width, None
+            font_size:self.width/8
+            font_name: 'GlacialIndifference-Bold.otf'
+            color: (1, 1, 1)
+            background_color:(0.6824, 0.2, 0.8, 1)
+            halign: 'center'
+            valign: 'center'
+            on_release: app.root.current = 'Q1'
+
+        Button:
+            text: 'Next Quiz'
+            size_hint: 0.35, 0.065
+            pos_hint: {"x":0.5,"y":0.065}
+            text_size: self.width, None
+            font_size: self.width / 8
+            font_name: 'GlacialIndifference-Bold.otf'
+            color: (1, 1, 1)
+            background_color:(0.6824, 0.2, 0.8, 1)
+            halign: 'center'
+            valign: 'center'
+            on_release: app.root.current = 'instructionpage'
+
+
+
+<InstructionPage>:
+    name:'instructionpage'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'bg2.png'
+
+
+    FloatLayout:
+        Button:
+            on_release:app.root.current = 'ScoreScreen'
+            size_hint:0.175,0.09
+            pos_hint: {"x":0.035,"y":0.90}
+            background_normal:'back.png'
+            background_down:'back.png'
+
+        Label:
+            text: 'Instruction to Play'
+            font_size: self.width / 10
+            color: 1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.523, 'center_y': 0.747}
+
+
+        Label:
+            text: 'Instruction to Play'
+            font_size: self.width / 10
+            color: 0.3608, 0.7843, 0.6941, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.52, 'center_y': 0.75}
+
+
+        Label:
+            text: 'In each level you play,there will be'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+
+        Label:
+            text: '10 questions prepared for you.'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.57}
+
+        Label:
+            text: 'Gather 3 stars in each level you'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.52}
+
+        Label:
+            text: 'completed to be able to proceed'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.49}
+
+        Label:
+            text: 'to another level.'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.46}
+
+        Label:
+            text: 'Each level will raise the difficulty '
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.41}
+
+        Label:
+            text: 'of each of the questions.'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+
+        Label:
+            text: 'Be careful when answering the'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.33}
+
+        Label:
+            text: ' question, you will lose a heart for'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.30}
+
+        Label:
+            text: ' each wrong questions. But not to'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.27}
+
+        Label:
+            text: ' worry, you will have 5 minutes'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.24}
+
+        Label:
+            text: 'cool down to be able to revive '
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.21}
+
+        Label:
+            text: ' each heart.'
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.18}
+
+        Label:
+            text: 'Good Luck ! '
+            font_size: self.width / 20
+            color:1, 1, 1
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+
+
+<TriviaBoard>:
+    name: 'triviaboard'
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: 'bg3.png'
+
+    FloatLayout:
+        Label:
+            text: 'Trivia Card'
+            font_size: self.width / 19
+            color: 1, 1, 1
+            font_name: 'GlacialIndifference-Regular.otf'
+            pos_hint: {'center_x': 0.35, 'center_y': 0.945}
+
+        Button:
+            on_release: app.root.current = 'home'
+            size_hint: 0.175, 0.09
+            pos_hint: {"x": 0.035, "y": 0.90}
+            background_normal: 'back.png'
+            background_down: 'back.png'
+
+        Image:
+            source: 'triviaBG.png'
+            size_hint: (0.75, 0.67)
+            pos_hint: {'center_x': 0.49, 'center_y': 0.6}
+
+    ScrollView:
+        size_hint: (0.65, 0.7)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.335}
+
+        Label:
+            id: science_fact_label
+            text: ""
+            font_size: self.width / 13
+            color: 0, 0, 0
+            font_name: 'GlacialIndifference-Bold.otf'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: self.width, None
+            padding: 10
+
+    FloatLayout:
+        Button:
+            text: 'Next Card'
+            size_hint: 0.35, 0.065
+            pos_hint: {"x": 0.30, "y": 0.23}
+            text_size: self.width, None
+            font_size: self.width / 7
+            font_name: 'GlacialIndifference-Bold.otf'
+            color: (1, 1, 1)
+            background_color: (0.6824, 0.2, 0.8, 1)
+            halign: 'center'
+            valign: 'center'
+            on_release: app.root.get_screen('triviaboard').fetch_random_science_fact()
+
+
