@@ -341,23 +341,34 @@ WindowManager:
             text: "Skin"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.35}
-            on_release: app.check_answer(root, 0)
+            on_release:
+                app.check_answer(root, 0)
+                self.background_color = (0,255,0)
+                self_color = (0,0,0)
         Button:
             text: "Liver"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.30}
-            on_release: app.check_answer(root, 1)
+            on_release:
+                app.check_answer(root, 1)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Brain"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.25}
-            on_release: app.check_answer(root, 2)
+            on_release:
+                app.check_answer(root, 2)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Heart"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.20}
-            on_release: app.check_answer(root, 3)
-
+            on_release:
+                app.check_answer(root, 3)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Label:
             id: score_label
             text: "Score: 0"
@@ -394,23 +405,34 @@ WindowManager:
             text: "Mouth"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.35}
-            on_release: app.check_answer(root, 0)
+            on_release:
+                app.check_answer(root, 0)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Stomach"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.30}
-            on_release: app.check_answer(root, 1)
+            on_release:
+                app.check_answer(root, 1)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Intestines"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.25}
-            on_release: app.check_answer(root, 2)
+            on_release:
+                app.check_answer(root, 2)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Lungs"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.20}
-            on_release: app.check_answer(root, 3)
-
+            on_release:
+                app.check_answer(root, 3)
+                self.background_color = (0,255,0)
+                self_color = (0,0,0)
         Label:
             id: score_label
             text: "Score: 0"
@@ -448,76 +470,34 @@ WindowManager:
             text: "To bring oxygen into the body and remove carbon dioxide"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.35}
-            on_release: app.check_answer(root, 0)
+            on_release:
+                app.check_answer(root, 0)
+                self.background_color = (0,255,0)
+                self_color = (0,0,0)
         Button:
             text: "To digest food"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.30}
-            on_release: app.check_answer(root, 1)
+            on_release:
+                app.check_answer(root, 1)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "To pump blood"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.25}
-            on_release: app.check_answer(root, 2)
+            on_release:
+                app.check_answer(root, 2)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "To protect the brain"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.20}
-            on_release: app.check_answer(root, 3)
-
-        Label:
-            id: score_label
-            text: "Score: 0"
-            size_hint: .2, .05
-            pos_hint: {"x": .75, "top": .98}
-
-        Button:
-            text: "Next"
-            size_hint: .2, .05
-            pos_hint: {"x": .75, "top": .02}
-            on_release: app.check_answer(self, self.correct_answer)
-
-        Label:
-            id: feedback_label
-            text: ""
-            size_hint: .2, .05
-            pos_hint: {"x": .75, "top": .95}
-
-<Q10>:
-    name: 'Q10'
-    FloatLayout:
-
-        Image:
-            source:"Assets/pic10.png"
-            allow_stretch:True
-            keep_ratio: False
-            size_hint:.50,.25
-            pos_hint: {"x":.25, "top":.75}
-        Label:
-            text:"What is the difference between a herbivore and a carnivore?"
-            size_hint:.4,.4
-            pos_hint: {"x":.30, "top":.65}
-        #Choices
-        Button:
-            text: "A herbivore eats plants, while a carnivore eats animals"
-            size_hint: .8,.05
-            pos_hint: {"x":.1, "top":.35}
-            on_release: app.check_answer(root, 0)
-        Button:
-            text: "A herbivore is a producer, while a carnivore is a consumer"
-            size_hint: .8,.05
-            pos_hint: {"x":.1, "top":.30}
-            on_release: app.check_answer(root, 1)
-        Button:
-            text: "A herbivore has a backbone, while a carnivore does not"
-            size_hint: .8,.05
-            pos_hint: {"x":.1, "top":.25}
-            on_release: app.check_answer(root, 2)
-        Button:
-            text: "A herbivore is warm-blooded, while a carnivore is cold-blooded"
-            size_hint: .8,.05
-            pos_hint: {"x":.1, "top":.20}
-            on_release: app.check_answer(root, 3)
+            on_release:
+                app.check_answer(root, 3)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
 
         Label:
             id: score_label
@@ -555,22 +535,99 @@ WindowManager:
             text: "Sexual reproduction"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.35}
-            on_release: app.check_answer(root, 0)
+            on_release:
+                app.check_answer(root, 0)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Asexual reproduction"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.30}
-            on_release: app.check_answer(root, 1)
+            on_release:
+                app.check_answer(root, 1)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
         Button:
             text: "Both A and B"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.25}
-            on_release: app.check_answer(root, 2)
+            on_release:
+                app.check_answer(root, 2)
+                self.background_color = (0,255,0)
+                self_color = (0,0,0)
         Button:
             text: "None of the above"
             size_hint: .8,.05
             pos_hint: {"x":.1, "top":.20}
-            on_release: app.check_answer(root, 3)
+            on_release:
+                app.check_answer(root, 3)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .98}
+
+        Button:
+            text: "Next"
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .02}
+            on_release: app.check_answer(self, self.correct_answer)
+
+        Label:
+            id: feedback_label
+            text: ""
+            size_hint: .2, .05
+            pos_hint: {"x": .75, "top": .95}
+<Q10>:
+    name: 'Q10'
+    FloatLayout:
+
+        Image:
+            source:"Assets/pic10.png"
+            allow_stretch:True
+            keep_ratio: False
+            size_hint:.50,.25
+            pos_hint: {"x":.25, "top":.75}
+        Label:
+            text:"What is the difference between a herbivore and a carnivore?"
+            size_hint:.4,.4
+            pos_hint: {"x":.30, "top":.65}
+        #Choices
+        Button:
+            text: "A herbivore eats plants, while a carnivore eats animals"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.35}
+            on_release:
+                app.check_answer(root, 0)
+                self.background_color = (0,255,0)
+                self_color = (0,0,0)
+        Button:
+            text: "A herbivore is a producer, while a carnivore is a consumer"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.30}
+            on_release:
+                app.check_answer(root, 1)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
+
+        Button:
+            text: "A herbivore has a backbone, while a carnivore does not"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.25}
+            on_release:
+                app.check_answer(root, 2)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
+        Button:
+            text: "A herbivore is warm-blooded, while a carnivore is cold-blooded"
+            size_hint: .8,.05
+            pos_hint: {"x":.1, "top":.20}
+            on_release:
+                app.check_answer(root, 3)
+                self.background_color = (255,0,0)
+                self_color = (0,0,0)
 
         Label:
             id: score_label
@@ -589,6 +646,7 @@ WindowManager:
             text: ""
             size_hint: .2, .05
             pos_hint: {"x": .75, "top": .95}
+
 
 
 
